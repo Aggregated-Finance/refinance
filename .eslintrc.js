@@ -10,7 +10,8 @@ module.exports = {
 		'plugin:react/recommended',
 		'plugin:react-hooks/recommended',
 		'plugin:tailwindcss/recommended',
-		'plugin:@typescript-eslint/recommended'
+		'plugin:@typescript-eslint/recommended',
+		'plugin:@next/next/recommended',
 	],
 	'parser': '@typescript-eslint/parser',
 	'parserOptions': {
@@ -43,7 +44,7 @@ module.exports = {
 		'quotes': [2, 'single', {'avoidEscape': true}],
 		'object-curly-spacing': [2, 'never'],
 		'array-bracket-spacing': [2, 'never'],
-		'react/jsx-curly-brace-presence': ['error', {'props': 'always', 'children': 'always'}],
+		'react/jsx-curly-brace-presence': ['warn', {'props': 'always', 'children': 'always'}],
 		'semi': 'error',
 		'tailwindcss/no-custom-classname': 0,
 		'@typescript-eslint/no-var-requires': 0,
@@ -63,7 +64,7 @@ module.exports = {
 		'@typescript-eslint/naming-convention': ['error',
 			{'selector': 'default', 'format': ['camelCase']},
 			{'selector': 'function', 'format': ['camelCase', 'PascalCase']},
-			
+
 			{'selector': 'variableLike', 'format': ['camelCase', 'PascalCase', 'UPPER_CASE'], 'leadingUnderscore': 'allow'},
 			{'selector': 'variable', 'types': ['boolean'], 'format': ['PascalCase'], 'prefix': ['is', 'should', 'has', 'can', 'did', 'will']},
 			{'selector': 'default', 'format': null, 'filter': {'regex': '^(0-9)$', 'match': false}},
@@ -74,7 +75,7 @@ module.exports = {
 				'prefix': ['set_']
 			},
 			{'selector': 'variableLike', 'format': ['PascalCase'], 'filter': {'regex': '(Context)$|(ContextApp)$|^Component$', 'match': true}},
-			
+
 			{'selector': ['typeParameter', 'typeAlias'], 'format': ['PascalCase'], 'prefix': ['T']},
 			{'selector': 'interface', 'format': ['PascalCase'], 'prefix': ['I']},
 			{'selector': ['default', 'variableLike', 'parameter'], 'format': null, 'filter': {'regex': '^(__html|_css)$', 'match': true}}

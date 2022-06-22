@@ -74,7 +74,10 @@ export const YearnContextApp = ({children}: {children: ReactElement}): ReactElem
 				toAddress('0x148c05caf1Bb09B5670f00D511718f733C54bC4c'), // yvUSDT
 				toAddress('0xCe2Fc0bDc18BD6a4d9A725791A3DEe33F3a23BB7'), // yvWETH
 				toAddress('0xd817A100AB8A29fE3DBd925c2EB489D67F758DA9'), // yvWBTC
-				toAddress('0x2C850cceD00ce2b14AA9D658b7Cad5dF659493Db')  // yvYFI
+				toAddress('0x2C850cceD00ce2b14AA9D658b7Cad5dF659493Db'), // yvYFI
+				toAddress('0xCbCaF8cB8cbeAFA927ECEE0c5C56560F83E9B7D9'), // yvCurve-Tricrypto
+				toAddress('0xA97E7dA01C7047D6a65f894c99bE8c832227a8BC'), // yvCurve-MIM
+				toAddress('0x0fBbf9848D969776a5Eb842EdAfAf29ef4467698')  // yvBOO
 			]
 		};
 		vaults = vaults.filter((vault: TVaultAPI): boolean => {
@@ -158,6 +161,10 @@ export const YearnContextApp = ({children}: {children: ReactElement}): ReactElem
 				vault.token.symbol = 'yCRV';
 			if (vault.token.symbol === 'cDAI+cUSDC+USDT')
 				vault.token.symbol = 'cUSDT';
+			if (vault.token.symbol === '3poolV2-f')
+				vault.token.symbol = 'MIM 3pool';
+			if (vault.token.symbol === 'crv3crypto')
+				vault.token.symbol = 'Tricrypto';
 
 			vault.categories = ['simple_saver'];
 			vault.chainID = chainID;
@@ -188,6 +195,12 @@ export const YearnContextApp = ({children}: {children: ReactElement}): ReactElem
 				if (toAddress(vault.address) === toAddress('0xd817A100AB8A29fE3DBd925c2EB489D67F758DA9')) //yvWBTC
 					vault.categories = ['simple_saver', 'blue_chip'];
 				if (toAddress(vault.address) === toAddress('0x2C850cceD00ce2b14AA9D658b7Cad5dF659493Db')) //yvYFI
+					vault.categories = ['simple_saver', 'blue_chip'];
+				if (toAddress(vault.address) === toAddress('0xCbCaF8cB8cbeAFA927ECEE0c5C56560F83E9B7D9')) //yvCurve-Tricrypto
+					vault.categories = ['simple_saver', 'blue_chip', 'curve'];
+				if (toAddress(vault.address) === toAddress('0xA97E7dA01C7047D6a65f894c99bE8c832227a8BC')) //yvCurve-MIM
+					vault.categories = ['simple_saver', 'usd_stable', 'curve'];
+				if (toAddress(vault.address) === toAddress('0x0fBbf9848D969776a5Eb842EdAfAf29ef4467698')) //yvBOO
 					vault.categories = ['simple_saver', 'blue_chip'];
 			}
 			_vaults.push(vault);

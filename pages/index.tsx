@@ -5,6 +5,7 @@ import	{motion}						from	'framer-motion';
 import	{Button, Card}					from	'@yearn-finance/web-lib/components';
 import	* as utils						from	'@yearn-finance/web-lib/utils';
 import	useYearn						from	'contexts/useYearn';
+import	{Dropdown}													from	'@yearn-finance/web-lib/components';
 import type {TVault}					from	'contexts/useYearn.d';
 
 function	VaultCard({currentVault}: {currentVault: TVault}): ReactElement {
@@ -91,16 +92,36 @@ function	Vaults({vaults}: {vaults: TVault[]}): ReactElement {
 	);
 }
 
+type TDropdownOption = {
+	value: string | number;
+	label: string;
+};
+
 function	Index(): ReactElement {
-	const	defaultSelectedCategories = {usdStable: false, blueChip: false, simpleSavers: false};
+	const	defaultSelectedCategories = {usdStable: false, blueChip: false, simpleSavers: false, curve: false};
 	const	{vaults, nonce: dataNonce} = useYearn();
 	const	[filteredVaults, set_filteredVaults] = React.useState<TVault[]>([]);
 	const	[selectedCategories, set_selectedCategories] = React.useState({...defaultSelectedCategories, simpleSavers: true});
+
+	const	options: TDropdownOption[] = [
+		{label: 'Sort by TVL', value: 0},
+		{label: 'Sort by APY', value: 1},
+		{label: 'Default Sort', value: 2}
+	];
+	const [filterBy, set_filterBy] = React.useState(options[0]);
+	/* ♻ - ReFinance ***********************************************************
+	** filterBy dict:
+	** 0 - tvl
+	** 1 - apy
+	** 2 - default
+	**************************************************************************/
 
 	/* 🔵 - Yearn Finance ******************************************************
 	** This effect is triggered every time the vault list or the search term is
 	** changed, or the delta selector is updated. It filters the pairs based on
 	** that to only work with them.
+	** ♻ - ReFinance
+	** Added filterBy change :P
 	**************************************************************************/
 	React.useEffect((): void => {
 		let		_filteredVaults = [...vaults];
@@ -108,12 +129,22 @@ function	Index(): ReactElement {
 			(selectedCategories.simpleSavers && vault.categories.includes('simple_saver'))
 			|| (selectedCategories.usdStable && vault.categories.includes('usd_stable'))
 			|| (selectedCategories.blueChip && vault.categories.includes('blue_chip'))
+			|| (selectedCategories.curve && vault.categories.includes('curve'))
 		));
-		_filteredVaults = _filteredVaults.sort((a, b): number => b.apy.net_apy - a.apy.net_apy);
-		utils.performBatchedUpdates((): void => {
+		if (filterBy.value === 0) {
+			console.log('SORTED BY TVL');
+			_filteredVaults = _filteredVaults.sort((a, b): number => b.tvl.tvl - a.tvl.tvl);
 			set_filteredVaults(_filteredVaults);
-		});
-	}, [dataNonce, vaults, selectedCategories]);
+		} else if (filterBy.value === 1) {
+			console.log('SORTED BY APY');
+			_filteredVaults = _filteredVaults.sort((a, b): number => b.apy.net_apy - a.apy.net_apy);
+			set_filteredVaults(_filteredVaults);
+		} else {
+			set_filteredVaults(_filteredVaults);
+		}
+		//});
+	}, [dataNonce, vaults, selectedCategories, options, filterBy]);
+
 
 	/* 🔵 - Yearn Finance ******************************************************
 	** Main render of the page.
@@ -121,6 +152,12 @@ function	Index(): ReactElement {
 	return (
 		<div className={'z-0 pb-10 w-full md:pb-20'}>
 			<div aria-label={'filters'} className={'flex flex-row justify-center items-center mb-7 -ml-1 space-x-2 md:ml-0'}>
+				<Dropdown
+					defaultOption={options[0]}
+					options={options}
+					selected={filterBy}
+					onSelect={(option: TDropdownOption): void => set_filterBy(options[option.value as number])}
+					className={'z-999'}/>
 				<button
 					aria-selected={selectedCategories.simpleSavers}
 					onClick={(): void => set_selectedCategories({...defaultSelectedCategories, simpleSavers: true})}
@@ -138,6 +175,12 @@ function	Index(): ReactElement {
 					onClick={(): void => set_selectedCategories({...defaultSelectedCategories, blueChip: true})}
 					className={'flex justify-center items-center px-2 h-8 border transition-colors cursor-pointer rounded-default macarena--filter'}>
 					<p className={'text-xs md:text-base'}>{'Blue Chips'}</p>
+				</button>
+				<button
+					aria-selected={selectedCategories.curve}
+					onClick={(): void => set_selectedCategories({...defaultSelectedCategories, curve: true})}
+					className={'flex justify-center items-center px-2 h-8 border transition-colors cursor-pointer rounded-default macarena--filter'}>
+					<p className={'text-xs md:text-base'}>{'Curve Pools'}</p>
 				</button>
 			</div>
 

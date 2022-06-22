@@ -1,4 +1,4 @@
-import	React, {ReactElement, ReactNode}	from	'react';	
+import	React, {ReactElement, ReactNode}	from	'react';
 import	Image								from	'next/image';
 import	{ethers}							from	'ethers';
 import	{Input, Button}						from	'@yearn-finance/web-lib/components';
@@ -15,7 +15,7 @@ import type {TVault}						from	'contexts/useYearn.d';
 ** The DepositCard component handle the whole logic to set the value to deposit
 ** or withdraw and perform the actual web3 action. It will use the user's info
 ** (provider, address) from the web-lib, it's wallet info from the useWallet
-** context and will init a bunch of state variables to controle the flow. 
+** context and will init a bunch of state variables to controle the flow.
 ** The utils.Transaction flow is used to perform the transactions.
 ******************************************************************************/
 function DepositCard({currentVault}: {currentVault: TVault}): ReactElement{
@@ -186,7 +186,7 @@ function DepositCard({currentVault}: {currentVault: TVault}): ReactElement{
 		}
 		return _amount * _price;
 	}, [amount, priceOfVault, currentVault?.decimals]);
-	
+
 	/* 🔵 - Yearn Finance ******************************************************
 	** Based on the getWithdrawReceiveTokens and the price of the underlying
 	** token, calculate the value of the tokens to receive if the user withdraw
@@ -216,7 +216,7 @@ function DepositCard({currentVault}: {currentVault: TVault}): ReactElement{
 		}
 		return _amount / _priceOfVault;
 	}, [amount, priceOfVault, currentVault?.decimals]);
-	
+
 	/* 🔵 - Yearn Finance ******************************************************
 	** Based on the getDepositReceiveTokens and the prices of the underlying
 	** token and the vault, calculate the value of the shares to receive if the
@@ -275,7 +275,7 @@ function DepositCard({currentVault}: {currentVault: TVault}): ReactElement{
 											<Line className={'text-typo-secondary'}/>
 										</div>
 										<div className={'flex justify-end'}>
-											<p className={'z-10 pl-2 text-right bg-neutral-0 text-typo-secondary'}>
+											<p className={'z-10 pl-2 text-right bg-neutral-0 text-typo-secondary mb-2'}>
 												{utils.format.amount(getWithdrawReceiveTokens(), 2, 6)}
 											</p>
 										</div>
@@ -289,7 +289,7 @@ function DepositCard({currentVault}: {currentVault: TVault}): ReactElement{
 											<Line className={'text-typo-secondary'}/>
 										</div>
 										<div className={'flex justify-end'}>
-											<p className={'z-10 pl-2 text-right bg-neutral-0 text-typo-secondary'}>
+											<p className={'z-10 pl-2 text-right bg-neutral-0 text-typo-secondary mb-2'}>
 												{`$ ${utils.format.amount(getWithdrawReceiveValue(), 2, 2)}`}
 											</p>
 										</div>
@@ -335,7 +335,7 @@ function DepositCard({currentVault}: {currentVault: TVault}): ReactElement{
 										<Line className={'text-typo-secondary'}/>
 									</div>
 									<div className={'flex justify-end'}>
-										<p className={'z-10 pl-2 text-right bg-neutral-0 text-typo-secondary'}>
+										<p className={'z-10 pl-2 text-right bg-neutral-0 text-typo-secondary mb-2'}>
 											{utils.format.amount(getDepositReceiveTokens(), 2, 6)}
 										</p>
 									</div>
@@ -349,7 +349,7 @@ function DepositCard({currentVault}: {currentVault: TVault}): ReactElement{
 										<Line className={'text-typo-secondary'}/>
 									</div>
 									<div className={'flex justify-end'}>
-										<p className={'z-10 pl-2 text-right bg-neutral-0 text-typo-secondary'}>
+										<p className={'z-10 pl-2 text-right bg-neutral-0 text-typo-secondary mb-2'}>
 											{`$ ${utils.format.amount(getDepositReceiveValue(), 2, 2)}`}
 										</p>
 									</div>
@@ -376,7 +376,7 @@ function DepositCard({currentVault}: {currentVault: TVault}): ReactElement{
 						isBusy={txStatusWithdraw.pending}
 						isDisabled={
 							!isActive
-							|| amount === '' || Number(amount) === 0 
+							|| amount === '' || Number(amount) === 0
 							|| Number(amount) > Number(utils.format.units(shareOfVault || 0, 18))
 						}>
 						{txStatusWithdraw.error ? 'Failed' : txStatusWithdraw.success ? 'Withdrawn!' : 'Withdraw'}
@@ -393,7 +393,7 @@ function DepositCard({currentVault}: {currentVault: TVault}): ReactElement{
 					isBusy={txStatusApprove.pending}
 					isDisabled={
 						!isActive
-						|| amount === '' || Number(amount) === 0 
+						|| amount === '' || Number(amount) === 0
 						|| Number(amount) > Number(utils.format.units(balanceOfToken || 0, 18))
 						|| Number(amount) <= Number(utils.format.units(allowanceForToken || 0, currentVault?.token?.decimals || 18))
 					}>
@@ -406,7 +406,7 @@ function DepositCard({currentVault}: {currentVault: TVault}): ReactElement{
 					isBusy={txStatusDeposit.pending}
 					isDisabled={
 						!isActive
-						|| amount === '' || Number(amount) === 0 
+						|| amount === '' || Number(amount) === 0
 						|| Number(amount) > Number(utils.format.units(balanceOfToken || 0, 18))
 						|| Number(amount) > Number(utils.format.units(allowanceForToken || 0, currentVault?.token?.decimals || 18))
 					}>

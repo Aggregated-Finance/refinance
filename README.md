@@ -1,9 +1,6 @@
-# Macarena Finance
-![](./public/og.png)
+# ➰ ReFinance
 
-Macarena finance is a simple UI for Yearn Finance, made to be forked!
-
-Running your own instance of Yearn makes you eligible to earn fees on top of all deposits made through your UI. See information on how partnership and profit-sharing work at our [Partner Docs](https://docs.yearn.finance/partners/introduction#profit-share-model)
+ReFinance is a fork of @yearn's Macarena Finance!
 
 **Table-of-content**
 - [Live Demo](#live-demo)
@@ -15,13 +12,13 @@ Running your own instance of Yearn makes you eligible to earn fees on top of all
 
 ## Live Demo
 
-- https://macarena.finance/
+- https://re.aggregated.tk/
 
 ## Quickstart
 
-1. Clone the repository: `git clone https://github.com/yearn/macarena-finance.git`
-2. Run `yarn` to install dependencies
-3. Run `yarn run dev` to raise the developer environment
+1. Clone the repository: `git clone https://github.com/aggregated-finance/refinance.git`
+2. Run `npm i` to install dependencies
+3. Run `npm start` to raise the developer environment
 4. Open your browser at `http://localhost:3000`  
 
 ###  Configure profit fees address
@@ -32,18 +29,18 @@ Running your own instance of Yearn makes you eligible to earn fees on top of all
 ### Add or remove Yearn Vaults displayed
 
 Change the list filtering the vaults you want to show at:
-- [`contexts/useYearn.tsx` lines 61~78](https://github.com/yearn/macarena-finance/blob/main/contexts/useYearn.tsx#L61-L78)  
+- [`contexts/useYearn.tsx` lines 61~78](https://github.com/aggregated-finance/ReFinance/blob/main/contexts/useYearn.tsx#L61-L78)  
 and  
-- [`contexts/useYearn.tsx` lines 163~190](https://github.com/yearn/macarena-finance/blob/main/contexts/useYearn.tsx#L163-L190)
+- [`contexts/useYearn.tsx` lines 163~190](https://github.com/aggregated-finance/ReFinance/blob/main/contexts/useYearn.tsx#L163-L190)
 
 ## Themes
 
 Customize the website css theme:
 
-1. Change theme name in [`_document.tsx at line 26`](https://github.com/yearn/macarena-finance/blob/main/pages/_document.tsx#L26) and [`style.css at line 8`](https://github.com/yearn/macarena-finance/blob/main/style.css#L8)
-2. Customize theme css in [`style.css`](https://github.com/yearn/macarena-finance/blob/main/style.css)
+1. Change theme name in [`_document.tsx at line 26`](https://github.com/aggregated-finance/ReFinance/blob/main/pages/_document.tsx#L26) and [`style.css at line 8`](https://github.com/aggregated-finance/ReFinance/blob/main/style.css#L8)
+2. Customize theme css in [`style.css`](https://github.com/aggregated-finance/ReFinance/blob/main/style.css)
 
-You can quickly change how everything looks by customizing [css variables in style.css](https://github.com/yearn/macarena-finance/blob/main/style.css#L9-L24). You can find the original CSS and the available CSS variables in the [Yearn Web Lib](https://github.com/yearn/web-lib/blob/main/packages/web-lib/style.css).
+You can quickly change how everything looks by customizing [css variables in style.css](https://github.com/aggregated-finance/ReFinance/blob/main/style.css#L9-L24). You can find the original CSS and the available CSS variables in the [Yearn Web Lib](https://github.com/yearn/web-lib/blob/main/packages/web-lib/style.css).
 
 ## Environment Variables
 

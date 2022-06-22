@@ -1,27 +1,28 @@
 /* This will load Tailwindcss + all the overwrite from Yearn lib */
 @import '@yearn-finance/web-lib/dist/style.css';
+@import url('https://fonts.googleapis.com/css2?family=Charis+SIL&family=Raleway:wght@600&display=swap');
 
 * {
-	@apply font-mono;
+	font-family: 'Raleway';
 }
 
-:root body[data-theme="macarena"] {
-	--default-rounded: 2px;
-	--color-neutral-0: 279 37% 17%;
-	--color-neutral-100: 279 36% 27%;
-	--color-neutral-200: 279 36% 34%;
-	--color-neutral-300: 279 36% 40%;
-	--color-neutral-400: 279 37% 17%;
-	--color-neutral-500: 0 0% 90%;
-	--color-neutral-700: 0 0% 100%;
+:root body[data-theme="ReFinance-1"] {
+	--default-rounded: 30px;
+	--color-neutral-0: #769F8C;
+	--color-neutral-100: #87C1A9;
+	--color-neutral-200: #90D2B8;
+	--color-neutral-300: #98E2C6;
+	--color-neutral-400: #94DABF;
+	--color-neutral-500: #96DEC3;
+	--color-neutral-700: #96DEC3;
 
-	--color-primary-100: 279 36% 34%;
-	--color-primary-200: 279 36% 32%;
+	--color-primary-100: #657E6F;
+	--color-primary-200: #5D6D61;
 	/* --color-primary-200: 225 47% 41%; */
-	--color-primary-500: 49 100% 50%;
-	--color-primary-600: 49 100% 47%;
-	--color-accent-500: 49 100% 50%;
-	--color-accent-600: 49 100% 47%;
+	--color-primary-500: #59655A;
+	--color-primary-600: #576156;
+	--color-accent-500: #545C52;
+	--color-accent-600: #545C52;
 
 	@apply bg-neutral-200;
 
@@ -60,11 +61,18 @@
 	}
 
 	& .yearn--dropdown-menu {
+		background-color: #98E2C6;
+		z-index: 99;
 		--dropdown-text-color: hsl(var(--color-primary-500));
 		--dropdown-bg-color: hsl(var(--color-neutral-300));
 		--dropdown-bg-color-active: hsl(var(--color-primary-200));
 		--dropdown-border-width: 0px;
 		--dropdown-border-color: black;
+
+		& .yearn--dropdown-menu-item {
+			margin-top: 5px;
+			margin-bottom: 2px;
+		}
 	}
 
 	& .macarena--kbar-wrapper {
@@ -85,7 +93,10 @@
 	}
 
 	& .macarena--header {
-		@apply pb-1 rounded-b-default bg-neutral-400;
+		@apply pb-1 bg-neutral-400;
+		& .macarena--header-2 {
+			background: transparent;
+		}
 		& > div {
 			@apply bg-neutral-100;
 		}
@@ -107,15 +118,17 @@
 		}
 	}
 	& .macarena--vaultCard {
+		border-radius: 30px;
 		@apply rounded-default bg-neutral-100;
 	}
 
 	& .yearn--modal {
+		background-color: #98E2C6;
 		@apply md:max-w-2xl;
 	}
 
 	& .yearn--modalLogin-card {
-		@apply bg-neutral-0 hover:bg-accent-500;
+		background-color: transparent;
 		& > b {@apply transition-colors;}
 		& > p {@apply transition-colors;}
 		&:hover {
@@ -123,5 +136,5 @@
 			& > p {@apply text-neutral-100;}
 		}
 	}
-	
+
 }

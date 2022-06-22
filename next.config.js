@@ -13,7 +13,7 @@ module.exports = {
 	},
 	env: {
 		//You need to change this one to your own ID!
-		PARTNER_ID_ADDRESS: '0x7eE89ddd96603669eB0CC92D81f221b756813872',
+		PARTNER_ID_ADDRESS: '0x3e522051A9B1958Aa1e828AC24Afba4a551DF37d',
 
 		/* 🔵 - Yearn Finance **************************************************
 		** Stuff used for the SEO or some related elements, like the title, the
@@ -26,10 +26,10 @@ module.exports = {
 		** - WEBSITE_DESCRIPTION is used in the meta tags
 		** - PROJECT_GITHUB_URL should be the link to your project on GitHub
 		**********************************************************************/
-		WEBSITE_URI: 'https://macarena.finance/',
-		WEBSITE_NAME: 'Macarena Finance',
-		WEBSITE_TITLE: 'Macarena Finance',
-		WEBSITE_DESCRIPTION: 'Macarena finance, a UI for Yearn Finance that you actually want to fork',
+		WEBSITE_URI: 'https://re.aggregated.tk/',
+		WEBSITE_NAME: 'ReFinance',
+		WEBSITE_TITLE: 'ReFinance',
+		WEBSITE_DESCRIPTION: 'ReFinance - Yearn but improved',
 		PROJECT_GITHUB_URL: 'https://github.com/yearn/macarena-finance',
 
 		/* 🔵 - Yearn Finance **************************************************

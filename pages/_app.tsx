@@ -13,7 +13,6 @@ import	{truncateHex}												from	'@yearn-finance/web-lib/utils';
 import	{NetworkEthereum, NetworkFantom, SocialDiscord, SocialGithub, SocialTwitter}				from	'@yearn-finance/web-lib/icons';
 import	useYearn, {YearnContextApp}									from	'contexts/useYearn';
 import	KBar														from	'components/Kbar';
-import	KBarButton													from	'components/KBarButton';
 import	LogoMacarena												from	'components/icons/LogoMacarena';
 
 import	'../style.css';
@@ -39,7 +38,7 @@ function	Header(): ReactElement {
 	const	{chainID, onSwitchChain, isActive, address, ens, openLoginModal, onDesactivate} = useWeb3();
 	const	[walletIdentity, set_walletIdentity] = React.useState('Connect wallet');
 	const	[selectedOption, set_selectedOption] = React.useState(options[0]);
-	
+
 	React.useEffect((): void => {
 		if (!isActive) {
 			set_walletIdentity('Connect wallet');
@@ -62,13 +61,16 @@ function	Header(): ReactElement {
 			<div className={'mx-auto w-full h-full rounded-sm bg-neutral-0'}>
 				<div className={'mx-auto w-full max-w-6xl h-full'}>
 					<div className={'grid grid-cols-3 justify-center w-full h-full'}>
-						<div aria-label={'search'} className={'hidden justify-start items-center md:flex'}>
+						{/*<div aria-label={'search'} className={'hidden justify-start items-center md:flex'}>
 							<KBarButton />
-						</div>
+						</div>*/}
 						<div aria-label={'logo'} className={'flex col-span-3 justify-center items-center md:col-span-1'}>
 							<Link href={'/'}>
 								<div>
-									<LogoMacarena className={'cursor-pointer'} />
+									<LogoMacarena style={{display: 'none'}}/>
+									<h2 style={{
+										fontSize: '36px'
+									}}>ReFinance ➰</h2>
 								</div>
 							</Link>
 						</div>
@@ -97,7 +99,7 @@ function	Header(): ReactElement {
 
 			</div>
 		</header>
-			
+
 	);
 }
 
@@ -258,7 +260,7 @@ function	AppWrapper(props: AppProps): ReactElement {
 
 function	MyApp(props: AppProps): ReactElement {
 	const	{Component, pageProps} = props;
-	
+
 	return (
 		<WithYearn
 			options={{
@@ -266,7 +268,7 @@ function	MyApp(props: AppProps): ReactElement {
 					shouldUseThemes: false
 				},
 				web3: {
-					defaultChainID: 1,
+					defaultChainID: 250,
 					supportedChainID: [1, 250, 1337]
 				}
 			}}>
