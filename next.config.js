@@ -29,8 +29,8 @@ module.exports = {
 		WEBSITE_URI: 'https://re.aggregated.tk/',
 		WEBSITE_NAME: 'ReFinance',
 		WEBSITE_TITLE: 'ReFinance',
-		WEBSITE_DESCRIPTION: 'ReFinance - Yearn but improved',
-		PROJECT_GITHUB_URL: 'https://github.com/yearn/macarena-finance',
+		WEBSITE_DESCRIPTION: 'ReFinance - Yearn UI but with a twist.',
+		PROJECT_GITHUB_URL: 'https://github.com/aggregated-finance/refinance',
 
 		/* 🔵 - Yearn Finance **************************************************
 		** Some config used to control the behaviour of the web library. By
