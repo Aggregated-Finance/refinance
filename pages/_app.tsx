@@ -169,13 +169,13 @@ function	AppHead(): ReactElement {
 							url: `${process.env.WEBSITE_URI}og.png`,
 							width: 1200,
 							height: 675,
-							alt: 'Macarena'
+							alt: 'ReFinance'
 						}
 					]
 				}}
 				twitter={{
-					handle: '@iearnfinance',
-					site: '@iearnfinance',
+					handle: '@aggregated_',
+					site: '@aggregated_',
 					cardType: 'summary_large_image'
 				}} />
 		</>

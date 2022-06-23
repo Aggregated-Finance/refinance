@@ -132,19 +132,17 @@ function	Index(): ReactElement {
 			|| (selectedCategories.curve && vault.categories.includes('curve'))
 		));
 		if (filterBy.value === 0) {
-			console.log('SORTED BY TVL');
 			_filteredVaults = _filteredVaults.sort((a, b): number => b.tvl.tvl - a.tvl.tvl);
 			set_filteredVaults(_filteredVaults);
 		} else if (filterBy.value === 1) {
-			console.log('SORTED BY APY');
 			_filteredVaults = _filteredVaults.sort((a, b): number => b.apy.net_apy - a.apy.net_apy);
 			set_filteredVaults(_filteredVaults);
-		} else {
-			set_filteredVaults(_filteredVaults);
 		}
+		utils.performBatchedUpdates((): void => {
+			set_filteredVaults(_filteredVaults);
+		});
 		//});
-	}, [dataNonce, vaults, selectedCategories, options, filterBy]);
-
+	}, [dataNonce, vaults, selectedCategories, filterBy]);
 
 	/* 🔵 - Yearn Finance ******************************************************
 	** Main render of the page.
