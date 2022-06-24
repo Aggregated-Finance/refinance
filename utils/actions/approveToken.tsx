@@ -54,7 +54,9 @@ export async function	approveERC20(
 			signer
 		);
 		const	transaction = await contract.approve(spender, amount);
-		const	transactionResult = await transaction.wait();
+		const	transactionResult = await transaction.wait().then((tx: any) => {
+			console.log(tx);
+		});
 		if (transactionResult.status === 0) {
 			console.error('Fail to perform transaction');
 			return false;

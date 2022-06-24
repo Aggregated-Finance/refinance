@@ -1,6 +1,7 @@
 import	{ContractInterface, ethers} from	'ethers';
 import	VAULT_ABI					from	'utils/abi/vault.v2.abi';
 
+
 export async function	withdrawShare(
 	provider: ethers.providers.Web3Provider,
 	vaultAddress: string,
@@ -19,7 +20,9 @@ export async function	withdrawShare(
 			maxShares,
 			recipient
 		);
-		const	transactionResult = await transaction.wait();
+		const	transactionResult = await transaction.wait().then((tx: any) => {
+			console.log(tx)
+		});
 		if (transactionResult.status === 0) {
 			console.error('Fail to perform transaction');
 			return false;

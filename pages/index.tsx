@@ -35,9 +35,14 @@ function	VaultCard({currentVault}: {currentVault: TVault}): ReactElement {
 								</div>
 							</div>
 							<div>
-								<h2 className={'mt-1 text-lg font-bold md:text-5xl text-neutral-700'}>
-									{currentVault.token.display_name || currentVault.token.name}
-								</h2>
+								{Number((currentVault.apy.net_apy * 100).toFixed(2)) > 0 ?
+									<h2 className={'mt-1 text-lg font-bold md:text-5xl text-neutral-700'}>
+										{currentVault.token.display_name || currentVault.token.name}
+									</h2> :
+									<h2 className={'mt-1 text-lg font-bold md:text-5xl text-amber-600'}>
+										{currentVault.token.display_name || currentVault.token.name} <div style={{fontSize: '18px'}}>{'Not earning...'}</div>
+									</h2>
+								}
 							</div>
 						</motion.div>
 
@@ -108,7 +113,12 @@ function	Index(): ReactElement {
 		{label: 'Sort by APY', value: 1},
 		{label: 'Default Sort', value: 2}
 	];
+
+	console.log(vaults);
+
 	const [filterBy, set_filterBy] = React.useState(options[0]);
+
+	const [tvl, set_tvl] = React.useState(0);
 	/* ♻ - ReFinance ***********************************************************
 	** filterBy dict:
 	** 0 - tvl
@@ -124,6 +134,12 @@ function	Index(): ReactElement {
 	** Added filterBy change :P
 	**************************************************************************/
 	React.useEffect((): void => {
+		let progTvl = 0;
+		//for (let i=0; i < vaults.length; i++) {
+		for (const vault of vaults) {
+			progTvl += vault.tvl.tvl;
+		}
+		set_tvl(progTvl);
 		let		_filteredVaults = [...vaults];
 		_filteredVaults = _filteredVaults.filter((vault): boolean => (
 			(selectedCategories.simpleSavers && vault.categories.includes('simple_saver'))
@@ -181,6 +197,11 @@ function	Index(): ReactElement {
 					<p className={'text-xs md:text-base'}>{'Curve Pools'}</p>
 				</button>
 			</div>
+
+			<h1 style={{
+				textAlign: 'center'
+			}}>${tvl.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} TVL</h1>
+			<br />
 
 			<Vaults vaults={filteredVaults} />
 		</div>

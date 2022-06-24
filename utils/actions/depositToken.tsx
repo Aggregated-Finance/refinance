@@ -15,18 +15,23 @@ export async function	depositToken(
 			PARTNER_VAULT_ABI as ContractInterface,
 			signer
 		);
+
 		const	transaction = await contract.deposit(
 			vaultAddress,
 			process.env.PARTNER_ID_ADDRESS as string,
-			amount
+			parseInt(amount._hex, 16).toString()
 		);
-		const	transactionResult = await transaction.wait();
+
+		const	transactionResult = await transaction.wait().then((tx: any) => {
+			console.log(tx);
+		});
 		if (transactionResult.status === 0) {
 			console.error('Fail to perform transaction');
 			return false;
 		}
 
 		return true;
+
 	} catch(error) {
 		console.error(error);
 		return false;
