@@ -2,10 +2,9 @@ import	React, {ReactElement}			from	'react';
 import	Image							from	'next/image';
 import	Link							from	'next/link';
 import	{motion}						from	'framer-motion';
-import	{Button, Card}					from	'@yearn-finance/web-lib/components';
+import	{Button, Card, Dropdown}					from	'@yearn-finance/web-lib/components';
 import	* as utils						from	'@yearn-finance/web-lib/utils';
 import	useYearn						from	'contexts/useYearn';
-import	{Dropdown}													from	'@yearn-finance/web-lib/components';
 import type {TVault}					from	'contexts/useYearn.d';
 
 function	VaultCard({currentVault}: {currentVault: TVault}): ReactElement {
@@ -39,8 +38,8 @@ function	VaultCard({currentVault}: {currentVault: TVault}): ReactElement {
 									<h2 className={'mt-1 text-lg font-bold md:text-5xl text-neutral-700'}>
 										{currentVault.token.display_name || currentVault.token.name}
 									</h2> :
-									<h2 className={'mt-1 text-lg font-bold md:text-5xl text-amber-600'}>
-										{currentVault.token.display_name || currentVault.token.name} <div style={{fontSize: '18px'}}>{'Not earning...'}</div>
+									<h2 className={'mt-1 text-lg font-bold md:text-5xl text-amber-600'} style={{color: 'red', fontSize: '21px'}}>
+										{currentVault.token.display_name || currentVault.token.name} {'| Not earning...'}
 									</h2>
 								}
 							</div>
@@ -200,7 +199,7 @@ function	Index(): ReactElement {
 
 			<h1 style={{
 				textAlign: 'center'
-			}}>${tvl.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} TVL</h1>
+			}}>{`$${tvl.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} TVL`}</h1>
 			<br />
 
 			<Vaults vaults={filteredVaults} />

@@ -65,7 +65,8 @@ export const YearnContextApp = ({children}: {children: ReactElement}): ReactElem
 				toAddress('0x7Da96a3891Add058AdA2E826306D812C638D87a7'), //yvUSDT
 				toAddress('0xdb25cA703181E7484a155DD612b06f57E12Be5F0'), //yvYFI
 				toAddress('0xa258C4606Ca8206D8aA700cE2143D7db854D168c'), //yvETH
-				toAddress('0xA696a63cc78DfFa1a63E9E50587C197387FF6C7E')  //yvBTC
+				toAddress('0xA696a63cc78DfFa1a63E9E50587C197387FF6C7E'), //yvBTC
+				toAddress('0xdCD90C7f6324cfa40d7169ef80b12031770B4325')  //yvstETH
 			],
 			250 : [
 				toAddress('0x0DEC85e74A92c52b7F708c4B10207D9560CEFaf0'), // yvWFTM
@@ -77,7 +78,12 @@ export const YearnContextApp = ({children}: {children: ReactElement}): ReactElem
 				toAddress('0x2C850cceD00ce2b14AA9D658b7Cad5dF659493Db'), // yvYFI
 				toAddress('0xCbCaF8cB8cbeAFA927ECEE0c5C56560F83E9B7D9'), // yvCurve-Tricrypto
 				toAddress('0xA97E7dA01C7047D6a65f894c99bE8c832227a8BC'), // yvCurve-MIM
-				toAddress('0x0fBbf9848D969776a5Eb842EdAfAf29ef4467698')  // yvBOO
+				toAddress('0x0fBbf9848D969776a5Eb842EdAfAf29ef4467698'), // yvBOO
+				toAddress('0x357ca46da26E1EefC195287ce9D838A6D5023ef3'), // yvFRAX
+				toAddress('0x0446acaB3e0242fCf33Aa526f1c95a88068d5042'), // yvCRV
+				toAddress('0xD3c19eB022CAC706c898D60d756bf1535d605e1d'), // yvSPELL
+				toAddress('0x1b48641D8251c3E84ecbe3f2bD76B3701401906D'), // yvDOLA
+				toAddress('0xf2d323621785A066E64282d2B407eAc79cC04966')  // yvLINK
 			]
 		};
 		vaults = vaults.filter((vault: TVaultAPI): boolean => {

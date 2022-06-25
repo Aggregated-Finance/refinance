@@ -44,7 +44,7 @@ module.exports = {
 		'quotes': [2, 'single', {'avoidEscape': true}],
 		'object-curly-spacing': [2, 'never'],
 		'array-bracket-spacing': [2, 'never'],
-		'react/jsx-curly-brace-presence': ['warn', {'props': 'always', 'children': 'always'}],
+		'react/jsx-curly-brace-presence': ['off', {'props': 'always', 'children': 'always'}],
 		'semi': 'error',
 		'tailwindcss/no-custom-classname': 0,
 		'@typescript-eslint/no-var-requires': 0,
